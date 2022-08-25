@@ -1,7 +1,7 @@
 const app = require('./app')
 
 app.load({
-    url: 'http://139.162.99.174:8888/',
+    url: 'http://',
     shell: 'socket',
     header: 'get',
     thread: 100,
