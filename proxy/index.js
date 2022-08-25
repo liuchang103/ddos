@@ -36,7 +36,6 @@ module.exports = {
     load() {
         try {
             this.data = fs.readFileSync(PROXY_PATH, 'UTF-8').toString().replace(/\r/g, '').split('\n')
-            console.log('Load Proxy: ' + this.data.length)
         } catch (e) {
             console.log('Load Proxy Error:' + e.message)
         }

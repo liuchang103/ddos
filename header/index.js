@@ -8,7 +8,6 @@ module.exports = {
     load(type) {
         try {
             this.data = fs.readFileSync(__dirname + '/' + type + '.txt', 'UTF-8').toString()
-            console.log('Load Header ' + type + ' Ok')
         } catch (e) {
             console.log('Load Header Error:' + e.message)
         }
@@ -20,7 +19,7 @@ module.exports = {
         for (const key in header) {
             data = data.replace('[' + key + ']', header[key]);
         }
-        
+
         return data
     }
 }

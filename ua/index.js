@@ -10,7 +10,6 @@ module.exports = {
     load() {
         try {
             this.data = fs.readFileSync(UA_PATH, 'UTF-8').toString().replace(/\r/g, '').split('\n')
-            console.log('Load UA: ' + this.data.length)
         } catch (e) {
             console.log('Load UA Error:' + e.message)
         }

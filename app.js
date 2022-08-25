@@ -38,11 +38,9 @@ module.exports = {
 
     // 子进程执行
     async child() {
-        console.log('Start Child Time: ' + this.config.time)
-
         // 计时
         setTimeout(() => {
-            console.log('Start Child Over')
+            console.log('Start Child Over: ' + this.config.time)
             process.exit(0)
         }, this.config.time)
 
