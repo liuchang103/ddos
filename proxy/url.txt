@@ -1,0 +1,2 @@
+https://proxys.club/api.php?key=CRnLzE3n&method=proxy
+https://proxypool.us/api.php?key=0xgqS21p&extract=http
