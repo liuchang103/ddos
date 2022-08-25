@@ -1,4 +1,4 @@
-const cluster = require('./cluster')
+const cluster = require('cluster')
 const url = require('url')
 const proxy = require('./proxy')
 const header = require('./header')
@@ -19,25 +19,29 @@ module.exports = {
     // 启动
     async start() {
         // 执行主进程
-        await cluster.master(async() => await this.master())
-        
-        // 创建子进程
-        cluster.create(this.config.thread)
+        await this.master()
 
         // 执行子进程
-        await cluster.child(async () => await this.child())
+        this.child()
     },
 
     // 主进程执行
     async master() {
+        if(!cluster.isMaster) return
         console.log('Start Master')
 
         // 更新代理
         await proxy.update()
+        
+        // 创建子进程
+        for (let i = 0; i < this.config.thread; i++){
+            cluster.fork()
+        }
     },
 
     // 子进程执行
     async child() {
+        if(cluster.isMaster) return
         // 计时
         setTimeout(() => {
             console.log('Start Child Over: ' + this.config.time)
