@@ -25,7 +25,7 @@ module.exports = {
             });
             socket.once('data', (data) => {
                 //console.log('Connected : ' + proxyer[0] + ":" + proxyer[1])
-                console.log(data.toString())
+                //console.log(data.toString())
             });
 
             for (let j = 0; j < config.launch; j++) {
