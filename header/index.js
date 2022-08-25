@@ -17,9 +17,10 @@ module.exports = {
     make(header) {
         let data = this.data
         for (const key in header) {
-            data = data.replace('[' + key + ']', header[key]);
+            if(data.includes('[' + key + ']')) {
+                data = data.replace('[' + key + ']', header[key])
+            }
         }
-
         return data
     }
 }
