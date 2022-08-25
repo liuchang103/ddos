@@ -1,12 +1,13 @@
 const app = require('./app')
 
 app.load({
-    url: 'http://85.10.195.175',
+    url: 'http://',
     shell: 'socket',
     header: 'get',
-    thread: 100,
-    time: 60,
+    post: '',
+    thread: 1,
+    time: 100,
     timeout: 5,
-    launch: 90,
-    speed: 3
+    launch: 1,
+    speed:  500
 }).start()
