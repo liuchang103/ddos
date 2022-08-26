@@ -15,7 +15,7 @@ module.exports = (config) => {
             post: config.post,
             post_length: config.post.length 
         })
-        data = header.random(data, config.randomlength)
+        data = header.random(data)
     }
 
     // 首次更新
@@ -35,7 +35,8 @@ module.exports = (config) => {
         socket.once('disconnect', () => {
             console.log('Disconnect')
         });
-        socket.once('data', () => {
+        socket.once('data', (data) => {
+            //console.log(data.toString())
             //console.log('Connected : ' + proxyer[0] + ":" + proxyer[1])
         });
 

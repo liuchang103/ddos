@@ -23,7 +23,7 @@ module.exports = (config) => {
             post: config.post,
             post_length: config.post.length 
         })
-        data = header.random(data, config.randomlength)
+        data = header.random(data)
         cipper = cplist[Math.floor(Math.random() * cplist.length)]
     }
 
@@ -67,8 +67,8 @@ module.exports = (config) => {
                 tlsConnection.destroy()
             })
 
-            tlsConnection.on('data', () => {
-                //console.log(data)
+            tlsConnection.on('data', (data) => {
+                //console.log(data.toString())
             })
         })
 

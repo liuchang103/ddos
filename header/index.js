@@ -25,16 +25,16 @@ module.exports = {
     },
 
     // 随机信息
-    random(header, length = 6) {
-        if(header.includes('[rand]')) {
-            header = header.replace('[rand]', this.rand(length))
-        } else if (header.includes('[random]')) {
-            header = header.replace('[random]', this.rand(length, 1))
+    random(header) {
+        if(header.includes('[*]')) {
+            header = header.replace('[*]', this.rand(3))
+        } else if (header.includes('[**]')) {
+            header = header.replace('[**]', this.rand(4, 1))
         } else {
             return header
         }
 
-        return this.random(header, length)
+        return this.random(header)
     },
     
     // 生成随机数
