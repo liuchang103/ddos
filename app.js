@@ -12,6 +12,7 @@ module.exports = {
         this.config = config
         this.config.time *= 1000
         this.config.timeout *= 1000
+        this.config.proxy *= 1000
         this.config.urls = new url.URL(this.config.url)
         return this
     },
@@ -37,16 +38,26 @@ module.exports = {
         for (let i = 0; i < this.config.thread; i++){
             cluster.fork()
         }
+
+        // 定时更新代理
+        if(this.config.proxy > 0) {
+            setInterval(() => {
+                proxy.update()
+            }, this.config.proxy)
+        }
     },
 
     // 子进程执行
     async child() {
         if(cluster.isMaster) return
         // 计时
-        setTimeout(() => {
-            console.log('Start Child Over: ' + this.config.time)
-            process.exit(0)
-        }, this.config.time)
+        if(this.config.time > 0) {
+            setTimeout(() => {
+                console.log('Start Child Over: ' + this.config.time)
+                process.exit(0)
+            }, this.config.time)
+        }
+        
 
         // 加载数据
         header.load(this.config.header)
@@ -59,5 +70,13 @@ module.exports = {
         // 执行脚本
         shell(this.config)
         console.log('Start Shell ' + this.config.shell)
+
+        // 定时更新代理
+        if(this.config.proxy > 0) {
+            setInterval(() => {
+                proxy.load()
+                console.log('proxy child load')
+            }, this.config.proxy + 5000)
+        }
     }
 }

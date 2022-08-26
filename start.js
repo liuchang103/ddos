@@ -2,19 +2,19 @@ const app = require('./app')
 
 app.load({
     // 网址 可使用 [*] [**] 随机字符
-    url: 'https://',
+    url: 'http://',
 
     // 使用 sheel 目录脚本
     shell: 'http',
 
     // 使用 header 目录头信息
-    header: 'post',
+    header: 'get',
 
     // post 数据 可使用 [*] [**] 随机字符
     post: '',
 
     // 进程数量
-    thread: 1,
+    thread: 2,
 
     // 连接超时时间 (秒)
     timeout: 15,
@@ -28,6 +28,9 @@ app.load({
     // 随机数据更换间隔 (毫秒)
     random: 50,
 
-    // 执行时间 (秒)
-    time: 100,
+    // 代理更新时间 (秒)，为 0 将不自动更新代理
+    proxy: 10,
+
+    // 执行时间 (秒)，为 0 将永久执行
+    time: 0,
 }).start()
