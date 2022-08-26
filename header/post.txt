@@ -11,5 +11,6 @@ Connection: Keep-Alive
 Content-Length: [post_length]
 Origin: [url]
 Referer: [url]
+X-Requested-With: XMLHttpRequest
 
 [post]

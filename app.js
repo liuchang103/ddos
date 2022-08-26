@@ -57,7 +57,7 @@ module.exports = {
         const shell = require('./shell/' + this.config.shell)
 
         // 执行脚本
-        shell.exec(this.config)
+        shell(this.config)
         console.log('Start Shell ' + this.config.shell)
     }
 }

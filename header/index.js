@@ -18,7 +18,7 @@ module.exports = {
         let data = this.data
         for (const key in header) {
             if(data.includes('[' + key + ']')) {
-                data = data.replace('[' + key + ']', header[key])
+                data = data.replaceAll('[' + key + ']', header[key])
             }
         }
         return data
