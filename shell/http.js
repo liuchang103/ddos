@@ -23,7 +23,8 @@ module.exports = (config) => {
             post: config.post,
             post_length: config.post.length 
         })
-        cipper = cplist[Math.floor(Math.random() * cplist.length)];
+        data = header.random(data, config.randomlength)
+        cipper = cplist[Math.floor(Math.random() * cplist.length)]
     }
 
     // 首次更新
@@ -57,7 +58,6 @@ module.exports = (config) => {
                 socket
             }, () => {
                 for (let i = 0; i < config.rate; i++) {
-                    console.log(data)
                     tlsConnection.write(data)
                 }
             });

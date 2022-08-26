@@ -15,6 +15,7 @@ module.exports = (config) => {
             post: config.post,
             post_length: config.post.length 
         })
+        data = header.random(data, config.randomlength)
     }
 
     // 首次更新

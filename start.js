@@ -5,13 +5,13 @@ app.load({
     url: 'http://',
 
     // 使用 sheel 目录脚本
-    shell: 'socket',
+    shell: 'http',
 
     // 使用 header 目录头信息
     header: 'post',
 
     // post 数据
-    post: 'username=',
+    post: 'username=[rand]&password=[random]',
 
     // 进程数量
     thread: 1,
@@ -27,6 +27,9 @@ app.load({
 
     // 随机数据更换间隔 (毫秒)
     random: 100,
+
+    // 随机数长度
+    randomlength: 10,
 
     // 执行时间 (秒)
     time: 100,
