@@ -75,7 +75,6 @@ module.exports = {
         if(this.config.proxy > 0) {
             setInterval(() => {
                 proxy.load()
-                console.log('proxy child load')
             }, this.config.proxy + 5000)
         }
     }
